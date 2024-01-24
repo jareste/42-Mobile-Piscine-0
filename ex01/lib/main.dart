@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Nikelao',
+      title: 'Flutter Demo',
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -28,11 +28,10 @@ class MyApp extends StatelessWidget {
         //
         // This works for code too, not just values: Most code changes can be
         // tested with just a hot reload.
-        colorScheme:
-            ColorScheme.fromSeed(seedColor: Color.fromARGB(255, 243, 66, 219)),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'nikeladus'),
+      home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }
@@ -56,6 +55,24 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  List<String> _strings = <String>['HelloWorld!', 'A complex text'];
+  String _currentString = 'A complex text';
+
+  void _changeString() {
+    setState(() {
+      if (_currentString == _strings[0]) {
+        _currentString = _strings[1];
+      } else {
+        _currentString = _strings[0];
+      }
+      // This call to setState tells the Flutter framework that something has
+      // changed in this State, which causes it to rerun the build method below
+      // so that the display can reflect the updated values. If we changed
+      // _counter without calling setState(), then the build method would not be
+      // called again, and so nothing would appear to happen.
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
@@ -99,8 +116,8 @@ class _MyHomePageState extends State<MyHomePage> {
                 children: <Widget>[
                   Container(
                     color: Colors.purple,
-                    child: const Text(
-                      'A complex text.',
+                    child: Text(
+                      _currentString,
                       style: TextStyle(fontSize: 24),
                       selectionColor: Color.fromARGB(255, 243, 66, 219),
                     ),
@@ -108,6 +125,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   Center(
                     child: TextButton(
                       onPressed: () {
+                        _changeString();
                         print('Button pressed');
                       },
                       child: const Text('Button'),
