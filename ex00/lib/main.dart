@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
             ColorScheme.fromSeed(seedColor: Color.fromARGB(255, 243, 66, 219)),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'nikeladus'),
+      home: const MyHomePage(title: 'ex00'),
     );
   }
 }
